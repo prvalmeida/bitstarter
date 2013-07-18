@@ -25,10 +25,8 @@ var fs = require('fs');
 var program = require('commander');
 var cheerio = require('cheerio');
 var rest = require('restler');
-var sys = require('util');
 var HTMLFILE_DEFAULT = "index.html";
 var CHECKSFILE_DEFAULT = "checks.json";
-var URLDEFAULT = "http://pacific-plains-7326.herokuapp.com/";
 
 var assertFileExists = function(infile) {
     var instr = infile.toString();
@@ -74,7 +72,6 @@ var clone = function(fn) {
 };
 
 if(require.main == module) {
-    var site;
     program
         .option('-c, --checks &lt;check_file&gt;', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
         .option('-f, --file &lt;html_file&gt;', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
